@@ -650,125 +650,139 @@
       return;
     }
 
-    const doc = new JsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 12;
-    const selectedTeam = getTeamById(filters.teamId === "all" ? "barcelona" : filters.teamId);
-    const roundLabel = filters.round === "all" ? "Todas las jornadas" : `Jornada ${filters.round}`;
+    try {
+      const doc = new JsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const margin = 12;
+      const selectedTeam = getTeamById(filters.teamId === "all" ? "barcelona" : filters.teamId);
+      const roundLabel = filters.round === "all" ? "Todas las jornadas" : `Jornada ${filters.round}`;
 
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(19);
-    doc.text("Reporte LigaPro Ecuador 2026", margin, 16);
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(9);
-    doc.text(`Generado: ${new Date().toLocaleString("es-EC")}`, margin, 23);
-    const compareLabel = filters.compare.length
-      ? filters.compare.map((teamId) => getTeamById(teamId).name).join(", ")
-      : "Sin comparar";
-    doc.text(
-      `Equipo: ${filters.teamId === "all" ? "Todos los equipos" : selectedTeam.name}  |  ${roundLabel}  |  Comparación: ${compareLabel}`,
-      margin,
-      29,
-      { maxWidth: pageWidth - margin * 2 }
-    );
-
-    const kpis = Array.from(document.querySelectorAll("#kpiGrid .kpi-card")).map((card) => ({
-      title: card.querySelector("h4").textContent.trim(),
-      value: card.querySelector(".kpi-value").textContent.trim()
-    }));
-    const columnWidth = (pageWidth - margin * 2) / 3;
-    kpis.forEach((kpi, index) => {
-      const column = index % 3;
-      const row = Math.floor(index / 3);
-      const x = margin + column * columnWidth;
-      const y = 38 + row * 13;
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(8);
-      doc.text(kpi.title, x, y);
+      doc.setFontSize(19);
+      doc.text("Reporte LigaPro Ecuador 2026", margin, 16);
       doc.setFont("helvetica", "normal");
-      doc.text(kpi.value, x, y + 4.5, { maxWidth: columnWidth - 4 });
-    });
+      doc.setFontSize(9);
+      doc.text(`Generado: ${new Date().toLocaleString("es-EC")}`, margin, 23);
+      const compareLabel = filters.compare.length
+        ? filters.compare.map((teamId) => getTeamById(teamId).name).join(", ")
+        : "Sin comparar";
+      doc.text(
+        `Equipo: ${filters.teamId === "all" ? "Todos los equipos" : selectedTeam.name}  |  ${roundLabel}  |  Comparación: ${compareLabel}`,
+        margin,
+        29,
+        { maxWidth: pageWidth - margin * 2 }
+      );
 
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(11);
-    doc.text("Gráficos del dashboard", margin, 68);
-    const chartIds = ["standingsChart", "resultsChart", "performanceChart", "goalsChart"];
-    const chartTitles = [
-      "Clasificación de equipos",
-      "Distribución de resultados",
-      "Evolución del rendimiento",
-      "Goles a favor / en contra"
-    ];
-    chartIds.forEach((chartId, index) => {
-      const canvas = document.getElementById(chartId);
-      if (!canvas) {
-        return;
-      }
+      const kpis = Array.from(document.querySelectorAll("#kpiGrid .kpi-card")).map((card) => ({
+        title: card.querySelector("h4").textContent.trim(),
+        value: card.querySelector(".kpi-value").textContent.trim()
+      }));
+      const columnWidth = (pageWidth - margin * 2) / 3;
+      kpis.forEach((kpi, index) => {
+        const column = index % 3;
+        const row = Math.floor(index / 3);
+        const x = margin + column * columnWidth;
+        const y = 38 + row * 13;
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8);
+        doc.text(kpi.title, x, y);
+        doc.setFont("helvetica", "normal");
+        doc.text(kpi.value, x, y + 4.5, { maxWidth: columnWidth - 4 });
+      });
 
-      const column = index % 2;
-      const row = Math.floor(index / 2);
-      const x = margin + column * ((pageWidth - margin * 2) / 2);
-      const y = 72 + row * 64;
-      const maxWidth = (pageWidth - margin * 2) / 2 - 8;
-      const maxHeight = 51;
-      const scale = Math.min(maxWidth / canvas.width, maxHeight / canvas.height);
-      const imageWidth = canvas.width * scale;
-      const imageHeight = canvas.height * scale;
-      const imageX = x + (maxWidth - imageWidth) / 2;
-      const imageY = y + 5 + (maxHeight - imageHeight) / 2;
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(8);
-      doc.text(chartTitles[index], x, y + 3);
-      if (document.body.dataset.theme === "light") {
-        doc.setFillColor(255, 255, 255);
-      } else {
-        doc.setFillColor(7, 17, 31);
-      }
-      doc.rect(x, y + 4, maxWidth, maxHeight + 2, "F");
-      doc.addImage(canvas.toDataURL("image/png"), "PNG", imageX, imageY, imageWidth, imageHeight);
-    });
+      doc.setFontSize(11);
+      doc.text("Gráficos del dashboard", margin, 68);
+      const chartIds = ["standingsChart", "resultsChart", "performanceChart", "goalsChart"];
+      const chartTitles = [
+        "Clasificación de equipos",
+        "Distribución de resultados",
+        "Evolución del rendimiento",
+        "Goles a favor / en contra"
+      ];
+      chartIds.forEach((chartId, index) => {
+        const canvas = document.getElementById(chartId);
+        if (!canvas) {
+          return;
+        }
 
-    doc.addPage();
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
-    doc.text("Clasificación y goleadores", margin, 16);
+        const column = index % 2;
+        const row = Math.floor(index / 2);
+        const x = margin + column * ((pageWidth - margin * 2) / 2);
+        const y = 72 + row * 64;
+        const maxWidth = (pageWidth - margin * 2) / 2 - 8;
+        const maxHeight = 51;
+        const scale = Math.min(maxWidth / canvas.width, maxHeight / canvas.height);
+        const imageWidth = canvas.width * scale;
+        const imageHeight = canvas.height * scale;
+        const imageX = x + (maxWidth - imageWidth) / 2;
+        const imageY = y + 5 + (maxHeight - imageHeight) / 2;
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8);
+        doc.text(chartTitles[index], x, y + 3);
+        if (document.body.dataset.theme === "light") {
+          doc.setFillColor(255, 255, 255);
+        } else {
+          doc.setFillColor(7, 17, 31);
+        }
+        doc.rect(x, y + 4, maxWidth, maxHeight + 2, "F");
+        doc.addImage(canvas.toDataURL("image/png"), "PNG", imageX, imageY, imageWidth, imageHeight);
+      });
 
-    const standings = getStandings().filter((row) => row.name.toLowerCase().includes(filters.search.toLowerCase()));
-    const standingsRows = standings.map((row, index) => [
-      index + 1, row.name, row.played, row.wins, row.draws, row.losses, row.gf, row.gc, row.gd, row.points
-    ]);
-    let tableY = drawPdfTable(doc, {
-      title: "Tabla de clasificación",
-      headers: ["Pos", "Equipo", "PJ", "PG", "PE", "PP", "GF", "GC", "DG", "Pts"],
-      rows: standingsRows,
-      y: 24,
-      margin,
-      widths: [12, 73, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5]
-    });
+      doc.addPage();
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("Clasificación y goleadores", margin, 16);
 
-    const scorers = players
-      .filter((player) => filters.teamId === "all" || player.teamId === selectedTeam.id)
-      .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
-      .map((player, index) => [
-        index + 1,
-        player.name,
-        getTeamById(player.teamId).name,
-        player.goals,
-        player.matches,
-        player.matches ? (player.goals / player.matches).toFixed(2) : "0.00"
+      const standings = getStandings().filter((row) => row.name.toLowerCase().includes(filters.search.toLowerCase()));
+      const standingsRows = standings.map((row, index) => [
+        index + 1, row.name, row.played, row.wins, row.draws, row.losses, row.gf, row.gc, row.gd, row.points
       ]);
-    tableY += 5;
-    drawPdfTable(doc, {
-      title: "Goleadores",
-      headers: ["Pos", "Jugador", "Equipo", "Goles", "PJ", "Promedio"],
-      rows: scorers,
-      y: tableY,
-      margin,
-      widths: [14, 70, 80, 30, 30, 30]
-    });
+      let tableY = drawPdfTable(doc, {
+        title: "Tabla de clasificación",
+        headers: ["Pos", "Equipo", "PJ", "PG", "PE", "PP", "GF", "GC", "DG", "Pts"],
+        rows: standingsRows,
+        y: 24,
+        margin,
+        widths: [12, 73, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5]
+      });
 
-    doc.save("reporte-ligapro-2026.pdf");
-    showToast("Reporte PDF generado.");
+      const scorers = players
+        .filter((player) => filters.teamId === "all" || player.teamId === selectedTeam.id)
+        .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
+        .map((player, index) => [
+          index + 1,
+          player.name,
+          getTeamById(player.teamId).name,
+          player.goals,
+          player.matches,
+          player.matches ? (player.goals / player.matches).toFixed(2) : "0.00"
+        ]);
+      tableY += 5;
+      drawPdfTable(doc, {
+        title: "Goleadores",
+        headers: ["Pos", "Jugador", "Equipo", "Goles", "PJ", "Promedio"],
+        rows: scorers,
+        y: tableY,
+        margin,
+        widths: [14, 70, 80, 30, 30, 30]
+      });
+
+      const pdfBlob = doc.output("blob");
+      const downloadUrl = URL.createObjectURL(pdfBlob);
+      const downloadLink = document.createElement("a");
+      downloadLink.href = downloadUrl;
+      downloadLink.download = "reporte-ligapro-2026.pdf";
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+      showToast("Reporte PDF generado y descargado.");
+    } catch (error) {
+      console.error("No se pudo generar el reporte PDF.", error);
+      showToast("No se pudo generar el reporte PDF. Revisa la consola para más detalles.");
+    }
   }
 
   function drawPdfTable(doc, { title, headers, rows, y, margin, widths }) {
