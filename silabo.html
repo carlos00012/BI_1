@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Resumen visual e interactivo del sílabo de Sistemas de Información para la Inteligencia de Negocios de la Universidad Técnica de Cotopaxi."
+    />
+    <title>Sílabo | Sistemas de Información para la Inteligencia de Negocios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/silabo.css" />
+  </head>
+  <body class="syllabus-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="reading-progress" aria-hidden="true">
+      <span id="readingProgress"></span>
+    </div>
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Navegación principal">
+        <a class="brand" href="index.html" aria-label="Ir a inicio">
+          <span class="brand-mark">BI</span>
+          <span>BI Academy</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu">
+          <a href="index.html">Inicio</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="silabo.html" class="active" aria-current="page">Sílabo</a>
+        </div>
+
+        <button class="theme-toggle" type="button" aria-label="Cambiar a tema claro">
+          <i class="bi bi-sun-fill" aria-hidden="true"></i>
+          <span>Tema claro</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="syllabus-hero">
+        <div class="container syllabus-hero-grid">
+          <div class="syllabus-hero-copy">
+            <span class="eyebrow"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i> Guía académica · UTC</span>
+            <h1>Sistemas de Información para la Inteligencia de Negocios</h1>
+            <p class="syllabus-subtitle">
+              Fundamentos, gestión, modelamiento de datos y soluciones de Business Intelligence para la toma de decisiones empresariales.
+            </p>
+            <div class="syllabus-hero-actions">
+              <a class="btn btn-primary" href="#unidades">Explorar unidades <i class="bi bi-arrow-down-short" aria-hidden="true"></i></a>
+              <a class="btn btn-secondary" href="index.html#quiz">Repasar con preguntas</a>
+              <button class="btn btn-secondary print-button" type="button" id="printSyllabus">
+                <i class="bi bi-printer" aria-hidden="true"></i> Imprimir / guardar PDF
+              </button>
+            </div>
+            <p class="syllabus-source-note">
+              <i class="bi bi-info-circle" aria-hidden="true"></i>
+              Resumen de los elementos principales del sílabo oficial. Consulta las indicaciones del docente para cualquier actualización.
+            </p>
+          </div>
+          <aside class="syllabus-hero-card" aria-label="Resumen de la asignatura">
+            <div class="hero-card-icon"><i class="bi bi-bar-chart-line-fill" aria-hidden="true"></i></div>
+            <span class="hero-card-label">De los datos a las decisiones</span>
+            <div class="hero-mini-flow" aria-hidden="true">
+              <span><i class="bi bi-database"></i></span><i class="bi bi-arrow-right"></i>
+              <span><i class="bi bi-diagram-3"></i></span><i class="bi bi-arrow-right"></i>
+              <span><i class="bi bi-lightbulb"></i></span>
+            </div>
+            <strong>144 <small>horas de formación</small></strong>
+            <span class="hero-card-caption">Conceptos · análisis · solución práctica</span>
+          </aside>
+        </div>
+      </section>
+
+      <div class="container syllabus-layout">
+        <aside class="syllabus-toc" aria-label="Índice de contenidos">
+          <span class="toc-heading">En esta página</span>
+          <a href="#datos">Datos académicos</a>
+          <a href="#objetivo">Objetivo</a>
+          <a href="#unidades">Unidades de aprendizaje</a>
+          <a href="#competencias">Competencias</a>
+          <a href="#metodologias">Metodologías</a>
+          <a href="#evaluaciones">Evaluaciones</a>
+          <a href="#proyecto-plastrack">Proyecto PlasTrack</a>
+          <a href="#bibliografia">Bibliografía</a>
+        </aside>
+
+        <div class="syllabus-content">
+          <section class="syllabus-section" id="datos">
+            <div class="section-heading left">
+              <span class="eyebrow">Ficha de la asignatura</span>
+              <h2>Datos académicos</h2>
+              <p>Información general y carga horaria registrada en el sílabo.</p>
+            </div>
+            <div class="academic-grid">
+              <article class="academic-card"><i class="bi bi-building" aria-hidden="true"></i><span>Institución</span><strong>Universidad Técnica de Cotopaxi</strong></article>
+              <article class="academic-card"><i class="bi bi-pc-display-horizontal" aria-hidden="true"></i><span>Carrera</span><strong>Sistemas de Información</strong></article>
+              <article class="academic-card"><i class="bi bi-layers" aria-hidden="true"></i><span>Ciclo</span><strong>Octavo</strong></article>
+              <article class="academic-card"><i class="bi bi-book" aria-hidden="true"></i><span>Asignatura</span><strong>Sistemas de Información para la Inteligencia de Negocios</strong></article>
+              <article class="academic-card"><i class="bi bi-calendar3" aria-hidden="true"></i><span>Período académico</span><strong>12 de octubre de 2026 al 21 de febrero de 2027</strong></article>
+              <article class="academic-card"><i class="bi bi-people" aria-hidden="true"></i><span>Paralelo</span><strong>A</strong></article>
+              <article class="academic-card"><i class="bi bi-award" aria-hidden="true"></i><span>Créditos</span><strong>3</strong></article>
+              <article class="academic-card"><i class="bi bi-clock-history" aria-hidden="true"></i><span>Horas totales</span><strong>144 horas</strong></article>
+            </div>
+
+            <article class="hours-panel">
+              <div class="panel-title-row">
+                <div><span class="eyebrow">Dedicación</span><h3>Distribución de las 144 horas</h3></div>
+                <span class="hours-total"><i class="bi bi-hourglass-split" aria-hidden="true"></i> 144 h</span>
+              </div>
+              <div class="hours-bar" role="img" aria-label="Distribución equitativa: 48 horas de docencia, 48 horas de prácticas y 48 horas de trabajo autónomo">
+                <span class="hours-teaching"></span><span class="hours-practice"></span><span class="hours-independent"></span>
+              </div>
+              <div class="hours-legend">
+                <span><i class="legend-dot teaching"></i><strong>48 h</strong> Docencia</span>
+                <span><i class="legend-dot practice"></i><strong>48 h</strong> Prácticas</span>
+                <span><i class="legend-dot independent"></i><strong>48 h</strong> Trabajo autónomo</span>
+              </div>
+              <p class="academic-note"><i class="bi bi-info-circle" aria-hidden="true"></i> La distribución de horas corresponde al sílabo oficial.</p>
+            </article>
+          </section>
+
+          <section class="syllabus-section" id="objetivo">
+            <div class="section-heading left">
+              <span class="eyebrow">Propósito formativo</span>
+              <h2>¿Qué aprenderás en esta asignatura?</h2>
+            </div>
+            <article class="objective-card">
+              <div class="objective-icon"><i class="bi bi-bullseye" aria-hidden="true"></i></div>
+              <div>
+                <span class="card-kicker">Objetivo general del sílabo</span>
+                <p>
+                  Analizar los principales conceptos relacionados con los fundamentos, características y modelamiento de la inteligencia de negocios para comprender cómo implementar herramientas de BI en una organización mediante las etapas necesarias para su correcta ejecución.
+                </p>
+              </div>
+            </article>
+            <div class="learning-callout">
+              <i class="bi bi-lightbulb-fill" aria-hidden="true"></i>
+              <p>La asignatura busca desarrollar conocimientos para transformar datos organizacionales en información útil para la toma de decisiones.</p>
+            </div>
+          </section>
+
+          <section class="syllabus-section" id="unidades">
+            <div class="section-heading left">
+              <span class="eyebrow">Ruta de aprendizaje</span>
+              <h2>Tres unidades, un recorrido</h2>
+              <p>Compara los temas y resultados. Abre una unidad para explorar sus detalles; solo una puede permanecer desplegada a la vez.</p>
+            </div>
+            <div class="unit-compare-grid">
+              <article class="unit-card unit-one">
+                <div class="unit-card-top"><span class="unit-number">01</span><span class="unit-tag">Comprender</span></div>
+                <h3>Fundamentos y gestión de la inteligencia de negocios</h3>
+                <p class="unit-summary">La base conceptual para comprender el funcionamiento y la utilidad de BI en las organizaciones.</p>
+                <span class="unit-label">Temas principales</span>
+                <ul class="unit-topic-preview">
+                  <li>Conceptos y componentes de BI</li><li>Sistemas de información y generación de valor</li><li>Herramientas de BI</li>
+                </ul>
+                <div class="unit-result"><span>Resultado de aprendizaje</span><p>Identificar conceptos básicos, herramientas y componentes de BI mediante su aplicación.</p></div>
+                <button class="unit-expand" type="button" aria-expanded="false" aria-controls="unit-detail-1" data-unit-toggle="unit-detail-1">
+                  <span>Explorar unidad</span><i class="bi bi-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="unit-detail" id="unit-detail-1" hidden>
+                  <h4>Temas oficiales</h4>
+                  <ol>
+                    <li>Conceptos básicos de Business Intelligence.</li>
+                    <li>Componentes de la inteligencia de negocios.</li>
+                    <li>Sistemas de información y generación de valor y ventaja corporativa.</li>
+                    <li>Principales herramientas de Business Intelligence.</li>
+                  </ol>
+                  <h4>Resultado de aprendizaje del sílabo</h4>
+                  <p>Identificar los conceptos básicos, herramientas y componentes de la inteligencia de negocios mediante la aplicación de herramientas de BI.</p>
+                  <h4>Competencia que se desarrolla</h4>
+                  <p>Identificación y aplicación de conceptos, componentes y herramientas de BI.</p>
+                  <h4>Relación con las otras unidades</h4>
+                  <p>Establece la base conceptual que se utiliza para estudiar almacenamiento y análisis en la Unidad 2, y para construir soluciones en la Unidad 3.</p>
+                </div>
+              </article>
+
+              <article class="unit-card unit-two">
+                <div class="unit-card-top"><span class="unit-number">02</span><span class="unit-tag">Analizar</span></div>
+                <h3>Sistemas de soporte a la administración y Data Warehouse</h3>
+                <p class="unit-summary">Explora estructuras multidimensionales y formas de convertir datos almacenados en conocimiento analizable.</p>
+                <span class="unit-label">Temas principales</span>
+                <ul class="unit-topic-preview">
+                  <li>Variables de medición y análisis</li><li>Data Warehouse y gestión del conocimiento</li><li>Evaluación, interpretación y visualización</li>
+                </ul>
+                <div class="unit-result"><span>Resultado de aprendizaje</span><p>Explotar esquemas multidimensionales con herramientas de visualización, análisis y consultas.</p></div>
+                <button class="unit-expand" type="button" aria-expanded="false" aria-controls="unit-detail-2" data-unit-toggle="unit-detail-2">
+                  <span>Explorar unidad</span><i class="bi bi-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="unit-detail" id="unit-detail-2" hidden>
+                  <h4>Temas oficiales</h4>
+                  <ol>
+                    <li>Variables de medición y análisis.</li>
+                    <li>Data Warehouse.</li>
+                    <li>Sistemas de gestión del conocimiento.</li>
+                    <li>Patrones: evaluación, interpretación y visualización.</li>
+                  </ol>
+                  <h4>Resultado de aprendizaje del sílabo</h4>
+                  <p>Explotar esquemas de bases de datos multidimensionales utilizando herramientas de visualización, análisis y consultas, con una administración adecuada.</p>
+                  <h4>Competencia que se desarrolla</h4>
+                  <p>Uso de esquemas multidimensionales y herramientas para visualizar, analizar y consultar información.</p>
+                  <h4>Relación con las otras unidades</h4>
+                  <p>Aplica los conceptos de BI de la Unidad 1 y aporta la estructura analítica sobre la que se apoya la solución práctica de la Unidad 3.</p>
+                  <div class="architecture-flow" aria-label="Arquitectura analítica representativa">
+                    <span><i class="bi bi-database" aria-hidden="true"></i> Datos</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span><i class="bi bi-server" aria-hidden="true"></i> Almacenamiento</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span><i class="bi bi-gear" aria-hidden="true"></i> Análisis</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span><i class="bi bi-bar-chart" aria-hidden="true"></i> Visualización</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="unit-card unit-three">
+                <div class="unit-card-top"><span class="unit-number">03</span><span class="unit-tag">Construir</span></div>
+                <h3>Sistema de soporte para toma de decisiones empresariales</h3>
+                <p class="unit-summary">Integra modelamiento, procesamiento, indicadores y tableros para apoyar decisiones empresariales.</p>
+                <span class="unit-label">Temas principales</span>
+                <ul class="unit-topic-preview">
+                  <li>Vistas multidimensionales e hipercubos</li><li>ETL, reporteadores y dashboards</li><li>KPI y aspectos técnicos del proyecto</li>
+                </ul>
+                <div class="unit-result"><span>Resultado de aprendizaje</span><p>Construir una solución de BI para un caso práctico, modelando información organizacional.</p></div>
+                <button class="unit-expand" type="button" aria-expanded="false" aria-controls="unit-detail-3" data-unit-toggle="unit-detail-3">
+                  <span>Explorar unidad</span><i class="bi bi-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="unit-detail" id="unit-detail-3" hidden>
+                  <h4>Temas oficiales</h4>
+                  <ol>
+                    <li>Vistas multidimensionales o hipercubos de datos.</li>
+                    <li>Procesos ETL.</li>
+                    <li>Reporteadores.</li>
+                    <li>Alertas y tableros de control o dashboards.</li>
+                    <li>Indicadores clave de desempeño (KPI).</li>
+                    <li>Aspectos técnicos del proyecto.</li>
+                  </ol>
+                  <h4>Resultado de aprendizaje del sílabo</h4>
+                  <p>Construir una solución de inteligencia de negocios para un caso práctico, modelando la información organizacional.</p>
+                  <h4>Competencia que se desarrolla</h4>
+                  <p>Modelamiento de información y construcción de una solución de inteligencia de negocios para un caso práctico.</p>
+                  <h4>Relación con las otras unidades</h4>
+                  <p>Integra la comprensión de BI de la Unidad 1 y el análisis multidimensional de la Unidad 2 en una solución orientada a la toma de decisiones.</p>
+                  <div class="process-flow" aria-label="Representación didáctica del proceso de BI">
+                    <span>Fuentes de datos</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span>ETL</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span>Modelado de datos</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span>Reportes y dashboards</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span>KPI</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    <span>Toma de decisiones</span>
+                  </div>
+                  <p class="academic-note"><i class="bi bi-info-circle" aria-hidden="true"></i> Flujo didáctico de los temas de la unidad; no es una transcripción literal del sílabo.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="syllabus-section" id="competencias">
+            <div class="section-heading left">
+              <span class="eyebrow">Desarrollo integral</span>
+              <h2>Competencias que desarrollarás</h2>
+              <p>Selecciona una tarjeta para consultar una síntesis de cada habilidad.</p>
+            </div>
+            <div class="soft-skills-grid">
+              <button class="skill-card" type="button" aria-pressed="false">
+                <i class="bi bi-laptop" aria-hidden="true"></i><strong>Competencia digital</strong><span>Uso eficaz y responsable de herramientas digitales.</span>
+              </button>
+              <button class="skill-card" type="button" aria-pressed="false">
+                <i class="bi bi-lightbulb" aria-hidden="true"></i><strong>Creatividad</strong><span>Diseño de soluciones de BI adaptadas a las necesidades organizacionales.</span>
+              </button>
+              <button class="skill-card" type="button" aria-pressed="false">
+                <i class="bi bi-shield-check" aria-hidden="true"></i><strong>Ética</strong><span>Tratamiento responsable, transparente y confidencial de los datos.</span>
+              </button>
+              <button class="skill-card" type="button" aria-pressed="false">
+                <i class="bi bi-people" aria-hidden="true"></i><strong>Liderazgo</strong><span>Coordinación de equipos y comunicación de hallazgos.</span>
+              </button>
+              <button class="skill-card" type="button" aria-pressed="false">
+                <i class="bi bi-search" aria-hidden="true"></i><strong>Pensamiento crítico</strong><span>Evaluación de la calidad de los datos y de la validez de los indicadores.</span>
+              </button>
+              <button class="skill-card" type="button" aria-pressed="false">
+                <i class="bi bi-puzzle" aria-hidden="true"></i><strong>Resolución de problemas</strong><span>Análisis de necesidades y construcción de soluciones de BI.</span>
+              </button>
+            </div>
+            <p class="academic-note">Síntesis de las habilidades identificadas en el sílabo.</p>
+          </section>
+
+          <section class="syllabus-section" id="metodologias">
+            <div class="section-heading left">
+              <span class="eyebrow">Cómo aprenderás</span>
+              <h2>Metodologías de aprendizaje</h2>
+              <p>El recorrido avanza de la comprensión colaborativa al análisis de problemas y la construcción de un proyecto.</p>
+            </div>
+            <div class="methodology-grid">
+              <article class="method-card"><span class="method-step">UNIDAD 1</span><i class="bi bi-people-fill" aria-hidden="true"></i><h3>Aprendizaje cooperativo</h3><p>Construcción compartida de la comprensión de fundamentos y herramientas de BI.</p></article>
+              <div class="method-connector" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+              <article class="method-card"><span class="method-step">UNIDAD 2</span><i class="bi bi-question-diamond-fill" aria-hidden="true"></i><h3>Aprendizaje basado en problemas</h3><p>Análisis de situaciones con apoyo de datos, esquemas multidimensionales y visualización.</p></article>
+              <div class="method-connector" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+              <article class="method-card"><span class="method-step">UNIDAD 3</span><i class="bi bi-kanban-fill" aria-hidden="true"></i><h3>Aprendizaje basado en proyectos</h3><p>Aplicación de los aprendizajes en la construcción de una solución para un caso práctico.</p></article>
+            </div>
+          </section>
+
+          <section class="syllabus-section" id="evaluaciones">
+            <div class="section-heading left">
+              <span class="eyebrow">Calendario consignado</span>
+              <h2>Evaluaciones y fechas importantes</h2>
+            </div>
+            <div class="assessment-timeline">
+              <article class="assessment-item"><span class="assessment-marker">01</span><div><span class="assessment-label">EVAL1</span><h3>22 de noviembre de 2026</h3></div></article>
+              <article class="assessment-item"><span class="assessment-marker">02</span><div><span class="assessment-label">EVAL2</span><h3>10 de enero de 2027</h3></div></article>
+              <article class="assessment-item"><span class="assessment-marker">03</span><div><span class="assessment-label">EVAL3</span><h3>14 de febrero de 2027</h3></div></article>
+            </div>
+            <p class="academic-note notice-note"><i class="bi bi-exclamation-circle" aria-hidden="true"></i> Estas son las fechas consignadas en el documento. Confirma con el docente cualquier cambio.</p>
+          </section>
+
+          <section class="syllabus-section project-section" id="proyecto-plastrack">
+            <div class="project-card">
+              <div class="project-heading">
+                <span class="eyebrow">Proyecto articulador del sílabo</span>
+                <span class="project-mark"><i class="bi bi-water" aria-hidden="true"></i> PlasTrack</span>
+              </div>
+              <h2>Monitoreo Inteligente de Microplásticos mediante Datos Copernicus para la Conservación de Ecosistemas Insulares (PlasTrack)</h2>
+              <p>La asignatura contribuye a transformar datos satelitales de Copernicus y CMEMS en información estratégica mediante dashboards, KPI y sistemas de alerta temprana, orientados a apoyar decisiones del sector pesquero y de gestores ambientales.</p>
+              <div class="project-flow" aria-label="Síntesis visual del aporte de BI al proyecto descrito en el sílabo">
+                <span><i class="bi bi-globe-americas" aria-hidden="true"></i> Datos satelitales</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                <span><i class="bi bi-cpu" aria-hidden="true"></i> Procesamiento y análisis</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                <span><i class="bi bi-speedometer2" aria-hidden="true"></i> Indicadores</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                <span><i class="bi bi-bell" aria-hidden="true"></i> Dashboard y alertas</span><i class="bi bi-arrow-right" aria-hidden="true"></i>
+                <span><i class="bi bi-compass" aria-hidden="true"></i> Apoyo a decisiones ambientales</span>
+              </div>
+              <p class="academic-note"><i class="bi bi-info-circle" aria-hidden="true"></i> Síntesis visual del aporte de BI al proyecto descrito en el sílabo. Esta página no implementa el proyecto PlasTrack real.</p>
+            </div>
+          </section>
+
+          <section class="syllabus-section" id="bibliografia">
+            <div class="section-heading left">
+              <span class="eyebrow">Para profundizar</span>
+              <h2>Bibliografía y recursos académicos</h2>
+              <p>Enlaces y títulos tal como constan en el sílabo compartido.</p>
+            </div>
+            <div class="resources-grid">
+              <article class="resource-card">
+                <h3><i class="bi bi-journal-bookmark-fill" aria-hidden="true"></i> Bibliografía básica</h3>
+                <ol>
+                  <li><a href="https://elibro.net/es/lc/utcotopaxi/titulos/58548" target="_blank" rel="noopener noreferrer">¿Cómo planificar un proyecto de inteligencia de negocio?</a></li>
+                  <li><a href="https://elibro.net/es/lc/utcotopaxi/titulos/121283" target="_blank" rel="noopener noreferrer">Base de datos.</a></li>
+                  <li><a href="https://elibro.net/es/lc/utcotopaxi/titulos/227386" target="_blank" rel="noopener noreferrer">La toma de decisiones en la práctica.</a></li>
+                  <li><a href="https://elibro.net/es/lc/utcotopaxi/titulos/282827" target="_blank" rel="noopener noreferrer">Excel y Power BI: el cóctel perfecto.</a></li>
+                </ol>
+              </article>
+              <article class="resource-card">
+                <h3><i class="bi bi-link-45deg" aria-hidden="true"></i> Recursos complementarios</h3>
+                <ul>
+                  <li><a href="http://cursos.yura.website/wp-content/uploads/2020/03/Introduccion_al_Business_Intelligence.pdf" target="_blank" rel="noopener noreferrer">Introducción al Business Intelligence</a></li>
+                  <li><a href="https://dialnet.unirioja.es/servlet/articulo?codigo=10387164" target="_blank" rel="noopener noreferrer">Análisis comparativo de herramientas web para la generación de visualizaciones interactivas</a></li>
+                  <li><a href="http://technologyrain.com.ar/index.php/trj/article/view/30" target="_blank" rel="noopener noreferrer">Desarrollo de inteligencia empresarial: análisis comparativo entre Power BI y Qlik Sense en la implementación de tableros estratégicos de indicadores clave</a></li>
+                </ul>
+              </article>
+              <article class="resource-card">
+                <h3><i class="bi bi-globe2" aria-hidden="true"></i> Sitios web recomendados</h3>
+                <ul>
+                  <li><a href="https://ecuciencia.utc.edu.ec/media/articulo/articulo-005-corregido.pdf" target="_blank" rel="noopener noreferrer">Aplicación de tecnologías .NET y Chart.js para el desarrollo de un tablero de indicadores clave</a></li>
+                  <li><a href="https://investigacion.utc.edu.ec/index.php/ciya/es/article/view/391" target="_blank" rel="noopener noreferrer">Inteligencia de negocios como alternativa de generación de valor y ventaja competitiva en las microempresas</a></li>
+                  <li><a href="https://learn.microsoft.com/es-es/power-bi/" target="_blank" rel="noopener noreferrer">Documentación oficial de Power BI</a></li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="syllabus-final-cta">
+            <div><span class="eyebrow">Continúa aprendiendo</span><h2>De los fundamentos a la práctica</h2><p>Explora los conceptos de BI y después observa las métricas en el dashboard demostrativo.</p></div>
+            <div class="final-cta-actions">
+              <a href="index.html" class="btn btn-secondary"><i class="bi bi-house" aria-hidden="true"></i> Volver al inicio</a>
+              <a href="dashboard.html" class="btn btn-primary"><i class="bi bi-bar-chart" aria-hidden="true"></i> Ver dashboard</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Volver al inicio de la página">
+      <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
+    <footer class="site-footer"><div class="container footer-inner"><span>BI Academy · Guía visual del sílabo</span><a href="#contenido">Volver al inicio de la página</a></div></footer>
+    <script src="js/main.js"></script>
+    <script src="js/silabo.js"></script>
+  </body>
+</html>

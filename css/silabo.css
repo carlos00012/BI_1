@@ -1,0 +1,1142 @@
+.syllabus-page {
+  --syllabus-accent: #50e5ff;
+  --syllabus-blue: #3d9eff;
+  --syllabus-violet: #8a7dff;
+  --syllabus-green: #39d39f;
+  --syllabus-surface: var(--surface-gradient);
+  --syllabus-soft: rgba(61, 158, 255, 0.07);
+}
+
+.syllabus-page .nav-menu {
+  gap: 1rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  background: var(--panel-strong);
+  color: var(--text);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: 4px;
+  background: transparent;
+}
+
+.reading-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--syllabus-blue), var(--syllabus-accent));
+}
+
+.syllabus-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 4rem;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(138, 125, 255, 0.16), transparent 27%),
+    radial-gradient(circle at 10% 80%, rgba(61, 158, 255, 0.13), transparent 34%);
+  border-bottom: 1px solid var(--border);
+}
+
+.syllabus-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.syllabus-hero-copy h1 {
+  max-width: 850px;
+  margin: 0 0 1.2rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.syllabus-hero-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.syllabus-subtitle {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+}
+
+.syllabus-hero-actions,
+.final-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.7rem;
+}
+
+.syllabus-hero-actions .btn {
+  gap: 0.45rem;
+}
+
+.syllabus-source-note,
+.academic-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.syllabus-source-note {
+  max-width: 700px;
+  margin: 1.4rem 0 0;
+}
+
+.syllabus-source-note i,
+.academic-note i {
+  color: var(--syllabus-accent);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.syllabus-hero-card {
+  padding: 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--syllabus-surface);
+  box-shadow: var(--shadow);
+}
+
+.hero-card-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.1rem;
+  place-items: center;
+  border: 1px solid rgba(80, 229, 255, 0.25);
+  border-radius: 16px;
+  background: rgba(61, 158, 255, 0.12);
+  color: var(--syllabus-accent);
+  font-size: 1.45rem;
+}
+
+.hero-card-label,
+.hero-card-caption {
+  display: block;
+  color: var(--muted);
+}
+
+.hero-mini-flow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1.1rem 0;
+  color: var(--syllabus-accent);
+}
+
+.hero-mini-flow span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--syllabus-soft);
+}
+
+.syllabus-hero-card > strong {
+  display: block;
+  font-size: 2.3rem;
+  line-height: 1.2;
+}
+
+.syllabus-hero-card > strong small {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.hero-card-caption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.syllabus-layout {
+  display: grid;
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: 2.2rem;
+  align-items: start;
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.syllabus-toc {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--syllabus-surface);
+}
+
+.toc-heading {
+  padding: 0.25rem 0.55rem 0.55rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.syllabus-toc a {
+  padding: 0.48rem 0.55rem;
+  border-radius: 9px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.syllabus-toc a:hover,
+.syllabus-toc a:focus-visible {
+  background: var(--syllabus-soft);
+  color: var(--text);
+}
+
+.syllabus-content {
+  min-width: 0;
+}
+
+.syllabus-section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 105px;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 0.45rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.section-heading p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.academic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.academic-card {
+  min-height: 122px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--syllabus-surface);
+}
+
+.academic-card i {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--syllabus-accent);
+  font-size: 1.1rem;
+}
+
+.academic-card span,
+.academic-card strong {
+  display: block;
+}
+
+.academic-card span {
+  margin-bottom: 0.2rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.academic-card strong {
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.hours-panel,
+.objective-card,
+.resource-card,
+.project-card,
+.syllabus-final-cta {
+  padding: 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--syllabus-surface);
+  box-shadow: var(--shadow);
+}
+
+.hours-panel {
+  margin-top: 1rem;
+}
+
+.panel-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.panel-title-row .eyebrow {
+  margin-bottom: 0.2rem;
+}
+
+.panel-title-row h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.hours-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--syllabus-accent);
+  font-weight: 800;
+}
+
+.hours-bar {
+  display: flex;
+  height: 18px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--bg-soft);
+}
+
+.hours-bar span {
+  flex: 1;
+}
+
+.hours-teaching {
+  background: var(--syllabus-blue);
+}
+
+.hours-practice {
+  background: var(--syllabus-accent);
+}
+
+.hours-independent {
+  background: var(--syllabus-violet);
+}
+
+.hours-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.hours-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hours-legend strong {
+  color: var(--text);
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.legend-dot.teaching {
+  background: var(--syllabus-blue);
+}
+
+.legend-dot.practice {
+  background: var(--syllabus-accent);
+}
+
+.legend-dot.independent {
+  background: var(--syllabus-violet);
+}
+
+.hours-panel .academic-note {
+  margin: 1rem 0 0;
+}
+
+.objective-card {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.objective-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border-radius: 15px;
+  background: rgba(61, 158, 255, 0.13);
+  color: var(--syllabus-accent);
+  font-size: 1.35rem;
+}
+
+.card-kicker {
+  color: var(--syllabus-accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.objective-card p {
+  margin: 0.45rem 0 0;
+  font-size: 1.05rem;
+}
+
+.learning-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(80, 229, 255, 0.25);
+  border-radius: 14px;
+  background: rgba(80, 229, 255, 0.06);
+}
+
+.learning-callout i {
+  color: var(--syllabus-accent);
+  font-size: 1.2rem;
+}
+
+.learning-callout p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.unit-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.unit-card {
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--syllabus-surface);
+  box-shadow: var(--shadow);
+}
+
+.unit-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.unit-number {
+  color: var(--syllabus-accent);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.unit-tag {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.unit-card h3 {
+  min-height: 3.2em;
+  margin: 0 0 0.65rem;
+  font-size: 1.06rem;
+  line-height: 1.45;
+}
+
+.unit-summary,
+.unit-result p {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.unit-label,
+.unit-result > span {
+  display: block;
+  margin: 0.9rem 0 0.35rem;
+  color: var(--syllabus-accent);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.unit-topic-preview {
+  min-height: 92px;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.unit-topic-preview li + li {
+  margin-top: 0.35rem;
+}
+
+.unit-result {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.unit-result p {
+  margin: 0;
+}
+
+.unit-expand {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.7rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.unit-expand i {
+  color: var(--syllabus-accent);
+  transition: transform 0.2s ease;
+}
+
+.unit-expand[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+.unit-detail {
+  padding-top: 0.7rem;
+}
+
+.unit-detail h4 {
+  margin: 0.8rem 0 0.35rem;
+  font-size: 0.9rem;
+}
+
+.unit-detail p,
+.unit-detail ol {
+  margin-bottom: 0.7rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.unit-detail ol {
+  padding-left: 1.2rem;
+}
+
+.unit-detail li + li {
+  margin-top: 0.3rem;
+}
+
+.architecture-flow,
+.process-flow,
+.project-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 1rem 0;
+}
+
+.architecture-flow span,
+.process-flow span,
+.project-flow span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--syllabus-soft);
+  font-size: 0.77rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.architecture-flow > i,
+.process-flow > i,
+.project-flow > i {
+  color: var(--syllabus-accent);
+}
+
+.unit-detail .academic-note {
+  margin: 0;
+}
+
+.soft-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.skill-card {
+  display: flex;
+  min-height: 170px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--syllabus-surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.skill-card:hover,
+.skill-card[aria-pressed="true"] {
+  transform: translateY(-3px);
+  border-color: var(--syllabus-accent);
+  background: var(--syllabus-soft);
+}
+
+.skill-card i {
+  margin-bottom: 0.8rem;
+  color: var(--syllabus-accent);
+  font-size: 1.35rem;
+}
+
+.skill-card strong {
+  margin-bottom: 0.35rem;
+}
+
+.skill-card span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.soft-skills-grid + .academic-note {
+  margin: 0.8rem 0 0;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.method-card {
+  position: relative;
+  min-height: 230px;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--syllabus-surface);
+}
+
+.method-card > i {
+  display: block;
+  margin: 0.9rem 0;
+  color: var(--syllabus-accent);
+  font-size: 1.6rem;
+}
+
+.method-step {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.method-card h3 {
+  font-size: 1rem;
+}
+
+.method-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.method-connector {
+  color: var(--syllabus-accent);
+  text-align: center;
+}
+
+.assessment-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.assessment-timeline::before {
+  position: absolute;
+  top: 24px;
+  right: 12%;
+  left: 12%;
+  height: 2px;
+  background: var(--border);
+  content: "";
+}
+
+.assessment-item {
+  position: relative;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--syllabus-surface);
+}
+
+.assessment-marker {
+  z-index: 1;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border: 1px solid var(--syllabus-accent);
+  border-radius: 50%;
+  background: var(--panel-strong);
+  color: var(--syllabus-accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.assessment-label {
+  color: var(--syllabus-accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.assessment-item h3 {
+  margin: 0.3rem 0 0;
+  font-size: 0.97rem;
+}
+
+.notice-note {
+  margin: 1rem 0 0;
+}
+
+.project-card {
+  overflow: hidden;
+  border-color: rgba(80, 229, 255, 0.28);
+  background:
+    radial-gradient(circle at top right, rgba(80, 229, 255, 0.1), transparent 34%),
+    var(--syllabus-surface);
+}
+
+.project-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(80, 229, 255, 0.3);
+  border-radius: 999px;
+  color: var(--syllabus-accent);
+  font-weight: 800;
+}
+
+.project-card h2 {
+  max-width: 900px;
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  line-height: 1.3;
+}
+
+.project-card > p:not(.academic-note) {
+  max-width: 900px;
+  color: var(--muted);
+}
+
+.project-flow {
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+}
+
+.project-flow span {
+  min-height: 58px;
+  max-width: 190px;
+  flex-direction: column;
+  flex: 1 1 130px;
+  padding: 0.65rem;
+}
+
+.project-flow span i {
+  color: var(--syllabus-accent);
+  font-size: 1.1rem;
+}
+
+.project-card .academic-note {
+  margin: 0;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.resource-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
+.resource-card h3 i {
+  color: var(--syllabus-accent);
+}
+
+.resource-card ol,
+.resource-card ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.resource-card a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(80, 229, 255, 0.45);
+  text-underline-offset: 3px;
+}
+
+.resource-card a:hover {
+  color: var(--syllabus-accent);
+}
+
+.syllabus-final-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.syllabus-final-cta .eyebrow {
+  margin-bottom: 0.3rem;
+}
+
+.syllabus-final-cta h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+}
+
+.syllabus-final-cta p {
+  max-width: 600px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.syllabus-final-cta .final-cta-actions {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 40;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel-strong);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.syllabus-page .site-footer {
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1100px) {
+  .academic-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .unit-compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .unit-card h3,
+  .unit-topic-preview {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .syllabus-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .syllabus-hero-card {
+    max-width: 480px;
+  }
+
+  .syllabus-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .syllabus-toc {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    gap: 0.35rem;
+    white-space: nowrap;
+  }
+
+  .toc-heading {
+    align-self: center;
+  }
+
+  .soft-skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .syllabus-page .nav-menu {
+    gap: 0.8rem;
+  }
+
+  .syllabus-hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .academic-grid,
+  .resources-grid,
+  .assessment-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .assessment-timeline::before {
+    display: none;
+  }
+
+  .methodology-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .method-connector {
+    transform: rotate(90deg);
+  }
+
+  .syllabus-final-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .syllabus-final-cta .final-cta-actions {
+    margin-top: 0.25rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .syllabus-page .brand > span:last-child {
+    display: none;
+  }
+
+  .syllabus-hero-actions .btn {
+    width: 100%;
+  }
+
+  .academic-grid,
+  .soft-skills-grid,
+  .resources-grid,
+  .assessment-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .academic-card {
+    min-height: 0;
+  }
+
+  .hours-legend {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .objective-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .architecture-flow,
+  .process-flow,
+  .project-flow {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .architecture-flow > i,
+  .process-flow > i,
+  .project-flow > i {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+
+  .project-flow span {
+    max-width: none;
+    flex: auto;
+  }
+}
+
+@media print {
+  :root,
+  body[data-theme="light"] {
+    color-scheme: light;
+    --text: #17263d;
+    --muted: #4e5d70;
+    --border: #cbd3df;
+    --surface-gradient: #ffffff;
+    --panel-strong: #ffffff;
+    --body-background: #ffffff;
+  }
+
+  body,
+  .syllabus-page {
+    background: #ffffff !important;
+    color: #17263d !important;
+    font-size: 10pt;
+  }
+
+  .site-header,
+  .reading-progress,
+  .syllabus-toc,
+  .theme-toggle,
+  .nav-toggle,
+  .syllabus-hero-actions,
+  .back-to-top,
+  .skip-link,
+  .site-footer {
+    display: none !important;
+  }
+
+  .syllabus-hero {
+    padding: 1rem 0;
+    background: #ffffff;
+  }
+
+  .syllabus-hero-grid,
+  .syllabus-layout {
+    display: block;
+  }
+
+  .syllabus-hero-card {
+    max-width: none;
+    margin-top: 1rem;
+    box-shadow: none;
+  }
+
+  .syllabus-layout {
+    padding: 0;
+  }
+
+  .syllabus-section,
+  .academic-card,
+  .unit-card,
+  .skill-card,
+  .method-card,
+  .assessment-item,
+  .resource-card,
+  .project-card,
+  .hours-panel,
+  .objective-card,
+  .syllabus-final-cta {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .unit-compare-grid,
+  .soft-skills-grid,
+  .academic-grid,
+  .resources-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .unit-detail[hidden] {
+    display: block !important;
+  }
+
+  .skill-card {
+    cursor: default;
+  }
+
+  a {
+    color: #17263d;
+  }
+}
