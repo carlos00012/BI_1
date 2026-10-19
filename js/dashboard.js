@@ -66,6 +66,7 @@
     populateFilters();
     bindEvents();
     renderDashboard();
+    window.addEventListener("themechange", renderDashboard);
     window.addEventListener("resize", handleResize);
   });
 
@@ -116,6 +117,7 @@
     const compareTeams = document.getElementById("compareTeams");
     const resetButton = document.getElementById("resetFilters");
     const exportButton = document.getElementById("exportCsv");
+    const exportPdfButton = document.getElementById("exportPdf");
     const searchInput = document.getElementById("teamSearch");
 
     teamFilter.addEventListener("change", (event) => {
@@ -147,6 +149,7 @@
     });
 
     exportButton.addEventListener("click", exportStandingsCsv);
+    exportPdfButton.addEventListener("click", exportDashboardPdf);
 
     if (searchInput) {
       searchInput.addEventListener("input", (event) => {
@@ -350,6 +353,15 @@
     return { type, data, options };
   }
 
+  function getChartTheme() {
+    const styles = getComputedStyle(document.body);
+    return {
+      text: styles.getPropertyValue("--chart-text").trim(),
+      tick: styles.getPropertyValue("--chart-tick").trim(),
+      grid: styles.getPropertyValue("--chart-grid").trim()
+    };
+  }
+
   function createOrUpdateChart(chartId, config) {
     const canvas = document.getElementById(chartId);
     if (!canvas || !window.Chart) {
@@ -364,6 +376,7 @@
   }
 
   function renderStandingsChart(standings, selectedTeam) {
+    const theme = getChartTheme();
     const labels = standings.map((row) => row.name);
     const data = standings.map((row) => row.points);
     const colors = standings.map((row) => (row.teamId === selectedTeam.id ? "#50e5ff" : "#3d9eff"));
@@ -400,8 +413,8 @@
             }
           },
           scales: {
-            x: { beginAtZero: true, grid: { color: "rgba(255,255,255,0.08)" }, ticks: { color: "#dce6ff" } },
-            y: { grid: { display: false }, ticks: { color: "#dce6ff" } }
+            x: { beginAtZero: true, grid: { color: theme.grid }, ticks: { color: theme.tick } },
+            y: { grid: { display: false }, ticks: { color: theme.tick } }
           }
         }
       )
@@ -409,6 +422,7 @@
   }
 
   function renderResultsChart(selectedTeam, roundLimit) {
+    const theme = getChartTheme();
     const summary = getTeamResultSummary(selectedTeam.id, roundLimit);
     if (!summary) {
       showToast("No hay datos disponibles para mostrar la distribución de resultados.");
@@ -434,7 +448,7 @@
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { position: "bottom", labels: { color: "#eaf2ff" } },
+            legend: { position: "bottom", labels: { color: theme.text } },
             tooltip: {
               callbacks: {
                 label: (context) => `${context.label}: ${context.parsed} partidos`
@@ -447,6 +461,7 @@
   }
 
   function renderPerformanceChart(roundLimit) {
+    const theme = getChartTheme();
     const compareIds = filters.compare.length ? filters.compare : [filters.teamId];
     const validIds = [...new Set(compareIds.filter((id) => teams.some((team) => team.id === id)))];
     const labels = Array.from({ length: roundLimit }, (_, index) => `J${index + 1}`);
@@ -471,11 +486,11 @@
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { labels: { color: "#eaf2ff" } }
+            legend: { labels: { color: theme.text } }
           },
           scales: {
-            x: { ticks: { color: "#dce6ff" }, grid: { color: "rgba(255,255,255,0.06)" } },
-            y: { beginAtZero: false, ticks: { color: "#dce6ff" }, grid: { color: "rgba(255,255,255,0.06)" } }
+            x: { ticks: { color: theme.tick }, grid: { color: theme.grid } },
+            y: { beginAtZero: false, ticks: { color: theme.tick }, grid: { color: theme.grid } }
           }
         }
       )
@@ -483,6 +498,7 @@
   }
 
   function renderGoalsChart(roundLimit) {
+    const theme = getChartTheme();
     const compareIds = filters.compare.length ? filters.compare : [filters.teamId];
     const validIds = [...new Set(compareIds.filter((id) => teams.some((team) => team.id === id)))];
 
@@ -523,11 +539,11 @@
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { labels: { color: "#eaf2ff" } }
+            legend: { labels: { color: theme.text } }
           },
           scales: {
-            x: { ticks: { color: "#dce6ff" }, grid: { display: false } },
-            y: { beginAtZero: true, ticks: { color: "#dce6ff" }, grid: { color: "rgba(255,255,255,0.06)" } }
+            x: { ticks: { color: theme.tick }, grid: { display: false } },
+            y: { beginAtZero: true, ticks: { color: theme.tick }, grid: { color: theme.grid } }
           }
         }
       )
@@ -625,6 +641,173 @@
     link.click();
     URL.revokeObjectURL(url);
     showToast("Archivo CSV exportado.");
+  }
+
+  function exportDashboardPdf() {
+    const JsPDF = window.jspdf && window.jspdf.jsPDF;
+    if (!JsPDF) {
+      showToast("No se pudo cargar el generador de PDF. Verifica tu conexión e inténtalo de nuevo.");
+      return;
+    }
+
+    const doc = new JsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 12;
+    const selectedTeam = getTeamById(filters.teamId === "all" ? "barcelona" : filters.teamId);
+    const roundLabel = filters.round === "all" ? "Todas las jornadas" : `Jornada ${filters.round}`;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(19);
+    doc.text("Reporte LigaPro Ecuador 2026", margin, 16);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.text(`Generado: ${new Date().toLocaleString("es-EC")}`, margin, 23);
+    const compareLabel = filters.compare.length
+      ? filters.compare.map((teamId) => getTeamById(teamId).name).join(", ")
+      : "Sin comparar";
+    doc.text(
+      `Equipo: ${filters.teamId === "all" ? "Todos los equipos" : selectedTeam.name}  |  ${roundLabel}  |  Comparación: ${compareLabel}`,
+      margin,
+      29,
+      { maxWidth: pageWidth - margin * 2 }
+    );
+
+    const kpis = Array.from(document.querySelectorAll("#kpiGrid .kpi-card")).map((card) => ({
+      title: card.querySelector("h4").textContent.trim(),
+      value: card.querySelector(".kpi-value").textContent.trim()
+    }));
+    const columnWidth = (pageWidth - margin * 2) / 3;
+    kpis.forEach((kpi, index) => {
+      const column = index % 3;
+      const row = Math.floor(index / 3);
+      const x = margin + column * columnWidth;
+      const y = 38 + row * 13;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8);
+      doc.text(kpi.title, x, y);
+      doc.setFont("helvetica", "normal");
+      doc.text(kpi.value, x, y + 4.5, { maxWidth: columnWidth - 4 });
+    });
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("Gráficos del dashboard", margin, 68);
+    const chartIds = ["standingsChart", "resultsChart", "performanceChart", "goalsChart"];
+    const chartTitles = [
+      "Clasificación de equipos",
+      "Distribución de resultados",
+      "Evolución del rendimiento",
+      "Goles a favor / en contra"
+    ];
+    chartIds.forEach((chartId, index) => {
+      const canvas = document.getElementById(chartId);
+      if (!canvas) {
+        return;
+      }
+
+      const column = index % 2;
+      const row = Math.floor(index / 2);
+      const x = margin + column * ((pageWidth - margin * 2) / 2);
+      const y = 72 + row * 64;
+      const maxWidth = (pageWidth - margin * 2) / 2 - 8;
+      const maxHeight = 51;
+      const scale = Math.min(maxWidth / canvas.width, maxHeight / canvas.height);
+      const imageWidth = canvas.width * scale;
+      const imageHeight = canvas.height * scale;
+      const imageX = x + (maxWidth - imageWidth) / 2;
+      const imageY = y + 5 + (maxHeight - imageHeight) / 2;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8);
+      doc.text(chartTitles[index], x, y + 3);
+      if (document.body.dataset.theme === "light") {
+        doc.setFillColor(255, 255, 255);
+      } else {
+        doc.setFillColor(7, 17, 31);
+      }
+      doc.rect(x, y + 4, maxWidth, maxHeight + 2, "F");
+      doc.addImage(canvas.toDataURL("image/png"), "PNG", imageX, imageY, imageWidth, imageHeight);
+    });
+
+    doc.addPage();
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("Clasificación y goleadores", margin, 16);
+
+    const standings = getStandings().filter((row) => row.name.toLowerCase().includes(filters.search.toLowerCase()));
+    const standingsRows = standings.map((row, index) => [
+      index + 1, row.name, row.played, row.wins, row.draws, row.losses, row.gf, row.gc, row.gd, row.points
+    ]);
+    let tableY = drawPdfTable(doc, {
+      title: "Tabla de clasificación",
+      headers: ["Pos", "Equipo", "PJ", "PG", "PE", "PP", "GF", "GC", "DG", "Pts"],
+      rows: standingsRows,
+      y: 24,
+      margin,
+      widths: [12, 73, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5]
+    });
+
+    const scorers = players
+      .filter((player) => filters.teamId === "all" || player.teamId === selectedTeam.id)
+      .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
+      .map((player, index) => [
+        index + 1,
+        player.name,
+        getTeamById(player.teamId).name,
+        player.goals,
+        player.matches,
+        player.matches ? (player.goals / player.matches).toFixed(2) : "0.00"
+      ]);
+    tableY += 5;
+    drawPdfTable(doc, {
+      title: "Goleadores",
+      headers: ["Pos", "Jugador", "Equipo", "Goles", "PJ", "Promedio"],
+      rows: scorers,
+      y: tableY,
+      margin,
+      widths: [14, 70, 80, 30, 30, 30]
+    });
+
+    doc.save("reporte-ligapro-2026.pdf");
+    showToast("Reporte PDF generado.");
+  }
+
+  function drawPdfTable(doc, { title, headers, rows, y, margin, widths }) {
+    const rowHeight = 7;
+    const pageHeight = doc.internal.pageSize.getHeight();
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text(title, margin, y);
+    y += 4;
+
+    const drawRow = (cells, isHeader) => {
+      let x = margin;
+      doc.setFont("helvetica", isHeader ? "bold" : "normal");
+      doc.setFontSize(isHeader ? 8 : 7.5);
+      cells.forEach((cell, index) => {
+        const width = widths[index];
+        if (isHeader) {
+          doc.setFillColor(232, 238, 248);
+          doc.rect(x, y, width, rowHeight, "F");
+        }
+        doc.setDrawColor(190, 200, 214);
+        doc.rect(x, y, width, rowHeight);
+        doc.text(String(cell), x + 1.5, y + 4.7, { maxWidth: width - 3 });
+        x += width;
+      });
+      y += rowHeight;
+    };
+
+    drawRow(headers, true);
+    rows.forEach((row) => {
+      if (y + rowHeight > pageHeight - 10) {
+        doc.addPage();
+        y = 15;
+        drawRow(headers, true);
+      }
+      drawRow(row, false);
+    });
+
+    return y;
   }
 
   function showToast(message) {

@@ -42,6 +42,11 @@
           <a href="index.html">Inicio</a>
           <a href="dashboard.html" class="active">Dashboard</a>
         </div>
+
+        <button class="theme-toggle" type="button" aria-label="Cambiar a tema claro">
+          <i class="bi bi-sun-fill" aria-hidden="true"></i>
+          <span>Tema claro</span>
+        </button>
       </nav>
     </header>
 
@@ -53,9 +58,15 @@
             <h1>LigaPro Ecuador 2026 — Centro de análisis</h1>
             <p>Panel demostrativo para explorar rendimiento, goles y clasificación del torneo.</p>
           </div>
-          <div class="dashboard-badges">
-            <span class="badge badge-demo">Datos de demostración</span>
-            <span class="badge badge-season">Temporada 2026</span>
+          <div class="dashboard-header-actions">
+            <div class="dashboard-badges">
+              <span class="badge badge-demo">Datos de demostración</span>
+              <span class="badge badge-season">Temporada 2026</span>
+            </div>
+            <button id="exportPdf" class="btn btn-export" type="button">
+              <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>
+              Generar reporte PDF
+            </button>
           </div>
         </section>
 
@@ -176,6 +187,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/dashboard.js"></script>
   </body>

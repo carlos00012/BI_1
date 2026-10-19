@@ -1,8 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
+  initThemeToggle();
   initETLDetails();
   renderBizExampleMetrics();
 });
+
+function initThemeToggle() {
+  const toggle = document.querySelector(".theme-toggle");
+  if (!toggle) {
+    return;
+  }
+
+  let theme = "dark";
+  try {
+    theme = localStorage.getItem("bi-academy-theme") === "light" ? "light" : "dark";
+  } catch (error) {
+    console.error("No se pudo leer el tema guardado.", error);
+  }
+
+  const applyTheme = (nextTheme) => {
+    document.body.dataset.theme = nextTheme;
+    const isDark = nextTheme === "dark";
+    toggle.innerHTML = `<i class="bi ${isDark ? "bi-sun-fill" : "bi-moon-fill"}" aria-hidden="true"></i><span>Tema ${isDark ? "claro" : "oscuro"}</span>`;
+    toggle.setAttribute("aria-label", `Cambiar a tema ${isDark ? "claro" : "oscuro"}`);
+    toggle.setAttribute("aria-pressed", String(!isDark));
+    window.dispatchEvent(new Event("themechange"));
+  };
+
+  applyTheme(theme);
+  toggle.addEventListener("click", () => {
+    theme = theme === "dark" ? "light" : "dark";
+    applyTheme(theme);
+    try {
+      localStorage.setItem("bi-academy-theme", theme);
+    } catch (error) {
+      console.error("No se pudo guardar el tema seleccionado.", error);
+    }
+  });
+}
 
 function initNavigation() {
   const toggle = document.querySelector(".nav-toggle");
