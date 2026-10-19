@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Plataforma educativa sobre Business Intelligence y dashboard demo de la LigaPro 2026."
+    />
+    <title>BI Academy | Business Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <a class="brand" href="index.html" aria-label="Ir a inicio">
+          <span class="brand-mark">BI</span>
+          <span>BI Academy</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu">
+          <a href="index.html" class="active">Inicio</a>
+          <a href="#fundamentos">Fundamentos</a>
+          <a href="#quiz">Cuestionario</a>
+          <a href="dashboard.html">Dashboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Business Intelligence & Analytics</span>
+            <h1>Business Intelligence: transforma datos en decisiones.</h1>
+            <p>
+              Las organizaciones convierten información dispersa en conocimiento útil,
+              accionable y medible para mejorar ventas, operaciones, experiencia del
+              cliente y resultados estratégicos.
+            </p>
+            <div class="hero-actions">
+              <a href="#fundamentos" class="btn btn-primary">Aprender fundamentos</a>
+              <a href="dashboard.html" class="btn btn-secondary">Explorar dashboard</a>
+            </div>
+            <ul class="hero-metrics">
+              <li><strong>+120%</strong><span>mejora en velocidad de decisiones</span></li>
+              <li><strong>30%</strong><span>reducción de errores operativos</span></li>
+              <li><strong>24/7</strong><span>monitoreo del rendimiento</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Visualización conceptual de BI">
+            <div class="panel chart-panel">
+              <div class="chart-header">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mini-chart">
+                <div class="line line-one"></div>
+                <div class="line line-two"></div>
+                <div class="line line-three"></div>
+              </div>
+              <div class="stat-grid">
+                <div>
+                  <small>Ventas</small>
+                  <strong>+18.4%</strong>
+                </div>
+                <div>
+                  <small>Inventario</small>
+                  <strong>92%</strong>
+                </div>
+                <div>
+                  <small>Retention</small>
+                  <strong>87%</strong>
+                </div>
+                <div>
+                  <small>Conversion</small>
+                  <strong>4.9%</strong>
+                </div>
+              </div>
+            </div>
+            <div class="floating-card card-1">
+              <i class="bi bi-database-check"></i>
+              <span>Datos limpios</span>
+            </div>
+            <div class="floating-card card-2">
+              <i class="bi bi-graph-up-arrow"></i>
+              <span>Indicadores KPI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fundamentos" class="content-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Fundamentos de BI</span>
+            <h2>¿Qué es Business Intelligence y por qué importa?</h2>
+          </div>
+
+          <div class="info-grid">
+            <article class="info-card">
+              <div class="card-icon"><i class="bi bi-question-circle"></i></div>
+              <h3>¿Qué es BI?</h3>
+              <p>
+                Business Intelligence reúne, analiza y presenta datos de negocio para
+                apoyar decisiones operativas, tácticas y estratégicas.
+              </p>
+            </article>
+            <article class="info-card">
+              <div class="card-icon"><i class="bi bi-bullseye"></i></div>
+              <h3>¿Para qué sirve?</h3>
+              <p>
+                Ayuda a conocer tendencias, detectar problemas, comparar resultados,
+                medir desempeño y entender la causa de los cambios en ventas,
+                inventario, logística o atención al cliente.
+              </p>
+            </article>
+            <article class="info-card">
+              <div class="card-icon"><i class="bi bi-building"></i></div>
+              <h3>¿Quiénes lo usan?</h3>
+              <p>
+                Se aplica en retail, bancos, educación, salud, logística, manufactura,
+                gobierno y deportes. En todos los casos, busca convertir datos en
+                acciones concretas.
+              </p>
+            </article>
+          </div>
+
+          <div class="concept-grid">
+            <div class="concept-block">
+              <h3>Datos, información, conocimiento y decisión</h3>
+              <ul>
+                <li><strong>Datos:</strong> hechos sin procesar, como ventas diarias o ubicaciones.</li>
+                <li><strong>Información:</strong> datos organizados y entendibles.</li>
+                <li><strong>Conocimiento:</strong> interpretación que explica patrones y causas.</li>
+                <li><strong>Decisión:</strong> acción basada en evidencia y contexto.</li>
+              </ul>
+            </div>
+            <div class="concept-block">
+              <h3>BI, análisis de datos y Business Analytics</h3>
+              <ul>
+                <li><strong>BI:</strong> transforma indicadores y datos operativos en monitoreo y análisis de negocio.</li>
+                <li><strong>Análisis de datos:</strong> descubre patrones, tendencias y anomalías.</li>
+                <li><strong>Business Analytics:</strong> usa esos hallazgos para decisiones y optimización del negocio.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pros-cons">
+            <div class="pros-box">
+              <h3>Ventajas</h3>
+              <ul>
+                <li>Mejora la visibilidad del rendimiento.</li>
+                <li>Acelera la toma de decisiones.</li>
+                <li>Reduce errores basados en suposiciones.</li>
+                <li>Facilita la comparación histórica.</li>
+              </ul>
+            </div>
+            <div class="cons-box">
+              <h3>Limitaciones</h3>
+              <ul>
+                <li>Los datos malos generan decisiones malas.</li>
+                <li>Requiere calidad, integración y mantenimiento.</li>
+                <li>Puede ser costoso implementar de manera completa.</li>
+                <li>La interpretación humana sigue siendo crítica.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="decision-section">
+        <div class="container">
+          <div class="section-heading narrow">
+            <span class="eyebrow">Toma de decisiones basada en datos</span>
+            <h2>De la alerta a la acción</h2>
+          </div>
+
+          <div class="decision-grid">
+            <div class="decision-card">
+              <h3>Tipos de decisiones</h3>
+              <ul>
+                <li><strong>Estratégicas:</strong> direccionan el rumbo futuro.</li>
+                <li><strong>Tácticas:</strong> ajustan campañas y procesos.</li>
+                <li><strong>Operativas:</strong> resuelven eventos del día a día.</li>
+              </ul>
+            </div>
+            <div class="decision-card">
+              <h3>Intuición vs evidencia</h3>
+              <p>
+                La intuición puede aportar experiencia, pero una decisión basada en
+                datos reduce sesgos, identifica causas y permite medir resultados.
+              </p>
+            </div>
+            <div class="decision-card">
+              <h3>Indicadores clave</h3>
+              <p>
+                Los KPI conectan objetivos con medición: ventas por región, tasa de
+                conversión, inventario disponible, % de cumplimiento operativo y más.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-flow">
+            <div class="flow-step">
+              <span>Problema</span>
+            </div>
+            <div class="flow-step">
+              <span>Recopilación</span>
+            </div>
+            <div class="flow-step">
+              <span>Análisis</span>
+            </div>
+            <div class="flow-step">
+              <span>Hallazgos</span>
+            </div>
+            <div class="flow-step">
+              <span>Decisión</span>
+            </div>
+            <div class="flow-step">
+              <span>Evaluación</span>
+            </div>
+          </div>
+
+          <div class="scenario-box">
+            <h3>Caso práctico</h3>
+            <p>
+              Una tienda detecta una reducción del 20% en sus ventas durante el
+              último mes. Con BI, el equipo puede analizar ventas por producto,
+              fecha, región y canal de venta para identificar si la caída se debe a
+              una campaña débil, escasez de inventario, cambios de temporada o un
+              problema específico del canal digital.
+            </p>
+            <p>
+              Los datos ayudan a tomar mejores decisiones, pero no garantizan
+              resultados correctos si la calidad o la interpretación es deficiente.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="etl-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Procesos ETL</span>
+            <h2>Extraer, transformar y cargar datos para análisis</h2>
+          </div>
+
+          <div class="etl-flow">
+            <div class="etl-card">
+              <div class="etl-icon"><i class="bi bi-cloud-arrow-down"></i></div>
+              <h3>Extract</h3>
+              <p>Obtener datos de bases de datos, CSV, Excel, APIs y otros sistemas.</p>
+              <button class="etl-toggle" data-target="extract-detail">Mostrar detalle</button>
+              <div class="etl-detail" id="extract-detail">
+                Ejemplo: importar ventas de un ERP, facturas en Excel y comportamiento de usuarios desde una API de comercio electrónico.
+              </div>
+            </div>
+
+            <div class="etl-card">
+              <div class="etl-icon"><i class="bi bi-wrench-adjustable"></i></div>
+              <h3>Transform</h3>
+              <p>Limpiar, validar, normalizar, combinar y preparar los datos para su análisis.</p>
+              <button class="etl-toggle" data-target="transform-detail">Mostrar detalle</button>
+              <div class="etl-detail" id="transform-detail">
+                Ejemplo: eliminar duplicados, tratar valores nulos, unificar fechas, corregir nombres inconsistentes, convertir monedas y calcular indicadores.
+              </div>
+            </div>
+
+            <div class="etl-card">
+              <div class="etl-icon"><i class="bi bi-download"></i></div>
+              <h3>Load</h3>
+              <p>Cargar la información en un data warehouse o base analítica para consulta.</p>
+              <button class="etl-toggle" data-target="load-detail">Mostrar detalle</button>
+              <div class="etl-detail" id="load-detail">
+                Ejemplo: guardar el conjunto limpio en un almacén analítico para alimentar dashboards y reportes de gestión.
+              </div>
+            </div>
+          </div>
+
+          <div class="etl-diagram">
+            <span>Fuentes de datos</span>
+            <i class="bi bi-arrow-right"></i>
+            <span>EXTRACT</span>
+            <i class="bi bi-arrow-right"></i>
+            <span>TRANSFORM</span>
+            <i class="bi bi-arrow-right"></i>
+            <span>LOAD</span>
+            <i class="bi bi-arrow-right"></i>
+            <span>Data Warehouse</span>
+            <i class="bi bi-arrow-right"></i>
+            <span>Dashboard BI</span>
+          </div>
+
+          <div class="etl-compare">
+            <div class="compare-box">
+              <h3>ETL</h3>
+              <p>Los datos se limpian antes de cargarse al almacén. Es usual cuando la calidad del dato necesita validarse antes del almacenamiento.</p>
+            </div>
+            <div class="compare-box">
+              <h3>ELT</h3>
+              <p>Los datos se cargan primero y la transformación ocurre dentro del mismo sistema analítico. Es útil cuando se necesita gran flexibilidad y escalabilidad.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Arquitectura BI</span>
+            <h2>Cómo se organiza una solución analítica</h2>
+          </div>
+
+          <div class="arch-grid">
+            <div class="arch-card"><span>Fuentes de datos</span></div>
+            <div class="arch-card"><span>Integración y preparación</span></div>
+            <div class="arch-card"><span>Data warehouse</span></div>
+            <div class="arch-card"><span>Modelado</span></div>
+            <div class="arch-card"><span>Dashboards e informes</span></div>
+            <div class="arch-card"><span>Toma de decisiones</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="example-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Ejemplo práctico</span>
+            <h2>BI aplicado a una tienda de tecnología</h2>
+          </div>
+
+          <div class="example-panel">
+            <p>
+              Los datos siguientes son simulados y tienen fines educativos. Una tienda de
+              dispositivos tecnológicos analiza un conjunto de ventas y compara ingresos,
+              productos más vendidos y crecimiento mensual para orientar promociones y compras.
+            </p>
+            <div id="biz-example-metrics" class="metric-cards"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz" class="quiz-section">
+        <div class="container">
+          <div class="quiz-card">
+            <div class="section-heading left">
+              <span class="eyebrow">Cuestionario interactivo</span>
+              <h2>Valida tus conocimientos BI</h2>
+            </div>
+
+            <div class="quiz-header-row">
+              <div class="progress-box">
+                <span>Progreso</span>
+                <div class="progress-track">
+                  <div id="quiz-progress" class="progress-fill"></div>
+                </div>
+              </div>
+              <div class="score-box">
+                <span>Puntuación</span>
+                <strong id="quiz-score">0</strong>
+              </div>
+            </div>
+
+            <div id="quiz-container"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>BI Academy © 2026 — Datos educativos y demostrativos.</p>
+        <a href="dashboard.html">Dashboard LigaPro</a>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+  </body>
+</html>

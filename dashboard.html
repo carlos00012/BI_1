@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dashboard demostrativo de la LigaPro Ecuador 2026 con métricas, gráficos y tablas."
+    />
+    <title>Dashboard LigaPro 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <header class="site-header">
+      <nav class="navbar container">
+        <a class="brand" href="index.html" aria-label="Volver a inicio">
+          <span class="brand-mark">BI</span>
+          <span>BI Academy</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu">
+          <a href="index.html">Inicio</a>
+          <a href="dashboard.html" class="active">Dashboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="dashboard-shell">
+      <div class="container">
+        <section class="dashboard-header">
+          <div>
+            <span class="eyebrow">Analytics deportivo</span>
+            <h1>LigaPro Ecuador 2026 — Centro de análisis</h1>
+            <p>Panel demostrativo para explorar rendimiento, goles y clasificación del torneo.</p>
+          </div>
+          <div class="dashboard-badges">
+            <span class="badge badge-demo">Datos de demostración</span>
+            <span class="badge badge-season">Temporada 2026</span>
+          </div>
+        </section>
+
+        <section class="filters-panel card-surface">
+          <div class="filter-row">
+            <div class="form-group">
+              <label for="teamFilter">Equipo</label>
+              <select id="teamFilter"></select>
+            </div>
+            <div class="form-group">
+              <label for="roundFilter">Jornada</label>
+              <select id="roundFilter"></select>
+            </div>
+            <div class="form-group static-field">
+              <label>Temporada</label>
+              <input type="text" value="2026" readonly />
+            </div>
+            <div class="form-group multi-group">
+              <label for="compareTeams">Comparar equipos</label>
+              <select id="compareTeams" multiple></select>
+            </div>
+            <div class="filter-actions">
+              <button id="resetFilters" class="btn btn-secondary">Restablecer</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid"></section>
+
+        <section class="chart-grid">
+          <article class="panel chart-card large">
+            <div class="panel-head">
+              <h3>Clasificación de equipos</h3>
+              <span class="meta-note">Demo • no oficial</span>
+            </div>
+            <canvas id="standingsChart"></canvas>
+          </article>
+
+          <article class="panel chart-card">
+            <div class="panel-head">
+              <h3>Distribución de resultados</h3>
+            </div>
+            <canvas id="resultsChart"></canvas>
+          </article>
+        </section>
+
+        <section class="chart-grid">
+          <article class="panel chart-card large">
+            <div class="panel-head">
+              <h3>Evolución del rendimiento</h3>
+            </div>
+            <canvas id="performanceChart"></canvas>
+          </article>
+
+          <article class="panel chart-card">
+            <div class="panel-head">
+              <h3>Goles a favor / en contra</h3>
+            </div>
+            <canvas id="goalsChart"></canvas>
+          </article>
+        </section>
+
+        <section class="tables-grid">
+          <article class="panel table-card">
+            <div class="panel-head with-action">
+              <h3>Tabla de clasificación</h3>
+              <button id="exportCsv" class="btn btn-export">Exportar CSV</button>
+            </div>
+            <div class="table-toolbar">
+              <input id="teamSearch" type="search" placeholder="Buscar equipo" aria-label="Buscar equipo" />
+            </div>
+            <div class="table-wrap">
+              <table id="standingsTable">
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Equipo</th>
+                    <th>PJ</th>
+                    <th>PG</th>
+                    <th>PE</th>
+                    <th>PP</th>
+                    <th>GF</th>
+                    <th>GC</th>
+                    <th>DG</th>
+                    <th>Pts</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel table-card">
+            <div class="panel-head">
+              <h3>Goleadores</h3>
+            </div>
+            <div class="table-wrap">
+              <table id="scorersTable">
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Jugador</th>
+                    <th>Equipo</th>
+                    <th>Goles</th>
+                    <th>PJ</th>
+                    <th>Promedio</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <div id="toast" class="toast-message" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
